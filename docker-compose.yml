@@ -1,0 +1,47 @@
+version: "3.9"
+
+services:
+  auth-service:
+    build: ./Service/auth-service
+    container_name: auth-service
+
+    ports:
+      - "8081:8081"
+    environment:
+      - JWT_SECRET=Secret1234567890
+      - JWT_EXPIRATION=86400000
+    depends_on:
+      - mysql
+
+  student-service:
+    build: ./Service/student_s
+    container_name: student_s
+    ports:
+      - "5002:5002"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/studentdb
+    depends_on:
+      - mongo
+
+  mongo:
+    image:  mongo:7.0.5
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  mysql:
+    image: mysql:8
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: soa_users
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mongo_data:
+  mysql_data:
