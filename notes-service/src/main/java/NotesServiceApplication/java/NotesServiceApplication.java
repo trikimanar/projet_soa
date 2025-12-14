@@ -1,4 +1,4 @@
-package com.example.notes_service;
+package NotesServiceApplication.java;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
