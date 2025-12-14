@@ -1,0 +1,21 @@
+# Définir le comportement par défaut
+* text=auto
+
+# Fichiers binaires
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.jar binary
+*.war binary
+
+# Fichiers à toujours traiter comme texte
+*.java text
+*.xml text
+*.json text
+*.yml text
+*.yaml text
+*.md text
+*.properties text
+*.cmd text diff=bat
+*.sh text eol=lf
